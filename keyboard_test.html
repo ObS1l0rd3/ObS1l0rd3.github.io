@@ -1,0 +1,98 @@
+<script> 
+        document.addEventListener('keydown', keypress);
+    var DECT = null
+    var DCTJEU = null
+    var compteur = 5
+    var compteurjeu = 10
+    var CMPT = 0;
+    var Le = [90, 68, 81, 83, 65, 69, 87, 88, 67];
+    
+    function decomptejeu(){
+    dcmptjeu.textContent = compteurjeu ;
+    appsur.textContent = "Appuyez sur" ;
+    DCTJEU = setInterval(comptemoinsjeu, 1000);
+    }
+    
+    function comptemoinsjeu(){
+        if(compteurjeu <1){
+            dcmptjeu.style.display = "none";
+            LT.style.display = "none";
+            var res = resultat.textContent
+            alert("vous avez gagné avec "+res+" points")
+            clearInterval(DCTJEU);
+            localStorage.setItem("score2",res);
+            window.location = "test_reflex.html";
+            appsur.textContent = "Votre score est : "
+            }else{
+                compteurjeu--
+                dcmptjeu.textContent = compteurjeu
+            }
+    }
+    
+    function decompte(){
+        dc.style.display= "none"
+        dcmpt.textContent = compteur
+        DECT = setInterval(comptemoins, 1000);
+    }
+    
+    function comptemoins(){
+        if(compteur < 1){
+        accueil.style.display = "none"
+        dcmpt.style.display = "none";
+        clearInterval(DECT);
+        SetLetter();
+        Lettre();
+        decomptejeu();
+        }else{
+            compteur--
+            dcmpt.textContent = compteur
+        }
+        
+    }
+    
+    
+    function SetLetter(){
+        window.Lett = Le[Math.floor(Math.random()*Le.length)];
+    }
+    function keypress(e){
+        if(e.keyCode == Lett){
+        CMPT++
+        document.getElementById("resultat").innerHTML = CMPT
+        SetLetter()
+        Lettre()
+        }
+       
+        }
+    function Lettre(){
+        var res = String.fromCharCode(Lett);
+        LT.textContent = res;
+        
+    };
+
+</script>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="temp/styles/styleshardclique.css">
+        <meta charset="UTF-8">
+    </head>
+    <header>
+        <title>Page Test</title>    
+    </header>
+    <div> <a href="index.html"> <input type="button" value="Retour au menu"> </a></div>
+        <audio controls autoplay style ="display: none">
+        <source src="keyboard.mp3">
+        </audio>
+    <body class="centrer">
+        <div id="accueil"><p style="font-size: 40; color: coral"> Bienvenue dans le jeu des lettres. </p>
+        <br><br><br><br><br><br>
+        <p>Dans ce jeu vous allez devoir appuyer <span style="color:crimson">le plus rapidement possible</span> sur la lettre affichée à l'écran pendant un certain temps. Bonne chance!</p><br><br>
+        <p style="color : firebrick; font-size: 20">Le jeu se joue avec les touches A, Z, E, Q, S, D, W, X, C</p><br>
+        <input id="dc" type = "button" value = "commencer" onClick = "decompte()"/></div>
+        <br><br><br><br><br><br><br><br>
+        <p style="text-align: center" id = "dcmpt"></p>
+        <hl style = "text-align: center;color:green;"><p id = "appsur"></p><p style = "font-size : 45"id = "LT"></p></hl>
+        <p style="font-size: 35 ; text-align: center; color: coral" id = "dcmptjeu"></p>
+        <p style="text-align: center" class="score" id="resultat"></p>
+    </body>
+</html>

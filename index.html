@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dart - page</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="temp/styles/styles.css">
+</head>
+<body>
+  <header class="header header--bg">
+    <div class="container header--wrapper">
+      <h1 class="header__title">Faites-vous partie des <span class="header__title--light"> 3%</span></h1>
+      <p class="header__paragraph">Nous avons tous le même cerveau et pourtant nous ne l'utilisons pas tous de la même façon. </p>
+        <div class="centrer">
+      <a class="button" href="hard clique.html">Testez votre cerveau</a>
+      <a class="button" href="https://fr.wikipedia.org/wiki/Le_Cerveau">en apprendre plus</a>
+    </div></div>
+  </header>
+   
+      <section class="score affiche section">
+
+    <div class="container">
+      <div class="page-section text-center">
+          <div class="score affiche">
+          <div class="resultatsize" id = "resultat">
+        <script type="text/javascript">
+            window.onload = Affiche;
+            
+            function Affiche(){
+    
+    var score = localStorage.getItem("score");
+    var phrase = score;
+    document.getElementById("resultat").innerHTML = "Votre précedent score au jeu du clique était de : "+phrase+". Le score moyen est de 110.";
+                
+    var score2 = localStorage.getItem("score2");
+    var phrase2 = score2;
+    document.getElementById("resultat2").innerHTML = "Votre précedent score au jeu des lettres était de : "+phrase2+". Le score moyen est de 12.";
+    
+    var score3 = localStorage.getItem("score3");
+    var phrase3 = score3;
+    document.getElementById("resultat3").innerHTML = "Votre temps de réaction a été de  : "+phrase3+". Le score moyen est de 0.38";            
+}
+
+   function supprimer(){
+       localStorage.removeItem("score");
+       localStorage.removeItem("score2");
+       localStorage.removeItem("score3");
+       
+   }         
+        
+        
+        </script>
+        </div>
+        <div class="resultatsize" id = "resultat2"></div>
+        <div class="resultatsize" id = "resultat3"></div>
+              <br/>
+              <br/>
+         <a class="button" href="index.html" onClick = "supprimer()">Remettre les scores à zéro</a>
+        
+        
+        
+        
+        
+        </div>
+    </div>
+        </div>
+      </section>
+
+
+  <section class="process">
+    <div class="container">
+      <div class="page-section text-center">
+        <h2 class="page-section__title">Votre cerveau est génial !</h2>
+        <p class="page-section__paragraph">Voici differentes choses que le test met en valeurs</p>
+          <!--lien vers explication en pop up du truc en question sur le cerveau-->
+        <div class="process__section-container">
+          <div class="process__first-colum">
+            <p class="process__section-container-margin">Vitesse de réaction</p>
+            <p class="process__section-container-margin" style="padding-right:80px;">Mémoire</p>
+            <p>Motricité fine</p>
+          </div>
+          <div class="process__second-colum">
+            <p>Concentration</p>
+            <p style="margin-top: 400px;">Vision</p>
+          </div>
+          <div class="process__third-colum">
+            <p class="process__section-container-margin">Réflexe</p>
+            <p class="process__section-container-margin position" style="position: relative;left: 40px">Système Nerveux</p>
+            <p>Plasticité cérébrale</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="video video--bg">
+    <div class="container">
+      <div class="page-section page-section--extra-large text-center">
+        <a class="button" href="https://www.youtube.com/watch?v=g7lnlXPJWgw">Regardez une petite vidéo sur le cerveau</a>
+
+              
+              </div>
+            </div>
+         
+    </section>
+
+
+
+  <footer class="footer footer--bg">
+    <div class="container">
+      <div class="page-section page-section--small">
+        <div class="row gutters-100">
+          
+            <h3 class="footer__title">Créé par Nathan Radiszewski et Marcel Rivet dans le cadre d'un projet ISN initialement pour le bac 2019/2020 </h3>
+            <ul>
+              <li><a href="#">Site marchand en developpement</a></li>
+                
+            </ul>
+           <p class=compteur>Compteur de visite depuis le 09/05/2020</p>
+            <a href="http://www.mon-compteur.fr"><img src="http://www.mon-compteur.fr/html_c01genv2-225623-6" border="0" /></a>
+          </div>
+        
+        </div>
+      
+    </div>
+    </footer>
+
+</body>
+</html>  

@@ -1,0 +1,107 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+<title>Cliquez le plus vite possible</title>
+    <!-- JAVA SCRIPT -->
+    <script type="text/javascript">
+    function affichermasquer(){
+        divInfo = document.getElementById("amasquer");
+        if (divInfo.style.display == "none")
+            divInfo.style.display = "block";
+        else divInfo.style.display = "none";
+        
+        
+        
+    }
+    function debut_timer() {
+        comm.style.display = "none"
+        tps1.style.display = "block"
+        var timer = document.getElementById("mon timer").innerHTML;
+        var arr = timer.split(":");
+        var heure = arr[0];
+        var min = arr[1];
+        var sec = arr[2];
+        if (sec == 0){
+            if (min == 0){
+                if (heure == 0){
+                    debut_timer2();
+                    affichermasquer();
+                    return;
+                }
+                heure--;
+                min = 60;
+                if (heure < 10) heure = "0" + heure;
+            }
+            min--;
+            if (min < 10) min = "0" + min;
+            sec = 59;
+        }
+        else sec--;
+        if (sec < 10) sec = "0" + sec;
+        document.getElementById("mon timer").innerHTML = heure + ":" + min + ":" + sec;
+        setTimeout(debut_timer, 1000);
+    }
+        
+    function debut_timer2() {
+        tps1.style.display = "none";
+        accueil.style.display = "none";
+        tps2.style.display ="block";
+        scr.style.display ="block";
+        var timer = document.getElementById("mon timer2").innerHTML;
+        var arr = timer.split(":");
+        var heure = arr[0];
+        var min = arr[1];
+        var sec = arr[2];
+        if (sec == 0){
+            if (min == 0){
+                if (heure == 0){
+                    alert("Temps écoulé ! Votre score est de : "+nbr);
+                    localStorage.setItem("score",nbr);
+                    window.location = "keyboard_test.html";
+                    return;
+                }
+                heure--;
+                min = 60;
+                if (heure < 10) heure = "0" + heure;
+            }
+            min--;
+            if (min < 10) min = "0" + min;
+            sec = 59;
+        }
+        else sec--;
+        if (sec < 10) sec = "0" + sec;
+        document.getElementById("mon timer2").innerHTML = heure + ":" + min + ":" + sec;
+        setTimeout(debut_timer2, 1000);
+    }
+        var nbr = 0
+     function clique(){   
+        nbr=nbr+1
+        var rep = nbr
+        document.getElementById("resultat").innerHTML = rep
+        }
+    </script>
+    <!-- FIN JAVASCRIPT -->
+    <link rel="stylesheet" href="temp/styles/styleshardclique.css">
+</head>
+    
+    <body><div> <a href="index.html"> <input type="button" value="Retour au menu"> </a></div>
+        <audio controls autoplay style = "display: none">
+        <source src="HARDCLICK.mp3">
+        </audio>
+        <br><br><br><br><br><br><br><br>
+        <div id = "accueil"><hl style = "display: flex; justify-content: center; align-items: center; color: coral; font-size: 40">Bienvenue sur le test de rapidité</hl><br><p style="text-align: center">Vous allez devoir cliquer autant de fois que vous pourrez, <span style="color:red">le plus rapidement possible </span>,  pour estimer votre vitesse d'action sur le bouton qui apparaîtra. Bonne chance !</p></div>
+        <div class="centrer"><input id = "comm" type = "button" value = "Commencer" onClick = "debut_timer();"/>
+        
+        <div class="centrer"><p id = "tps1" style = "text-align: center; display: none"><span id="tps avnt" style ="color: black; font-size: 175%;" >Temps avant le début du test : </span><span id="mon timer" style="color:coral; font-size: 275%; font-weight: bold;">00:00:05</span></p>
+            
+        <p id = "tps2" style= "display: none"><span id="tps reste" style ="color:black; font-size: 175%;" >Temps restant : </span> <span id="mon timer2" style="color:coral; font-size: 275%; font-weight: bold;">00:00:20</span></p></div>
+        
+        
+        <div id="scr" style="display: none">Score actuel : <p class="score" id="resultat"></p></div>
+        
+        <p style="font-size:150%"><strong>↓</strong>  Le bouton sur lequel cliquer apparaîtra juste en dessous <strong>↓</strong> </p>
+        <div id="amasquer" style="display:none;">
+            <input type = "button" style="width: 400px; height: 200px" value = "CLIQUEZ ICI !" onClick = "clique();"/></div>
+        </div>
+        </body>
+</html>

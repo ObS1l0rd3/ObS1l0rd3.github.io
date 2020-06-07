@@ -1,0 +1,72 @@
+<script>
+    function timer1(){
+        var changecoul = [3000,3500,4000,4500,5000,5500]
+        var temps = 5
+        messtime.style.display = "block"
+        timer1st.textContent = temps
+        var InterV = setInterval( function Dcompte(){
+        if(temps <1){
+            messtime.style.display = "none";
+            bienvenue.style.display = "none";
+            timer1st.style.display = "none";
+            regles.style.display = "none";
+            bouton.style.display = "none";
+            clearInterval(InterV);
+            MessageClic.textContent = "Patientez ..."
+            fond.style.backgroundColor = "red";
+            setTimeout(function Jeu(){
+                fond.style.backgroundColor = "green";
+                MessageClic.textContent = "Cliquez Maintenant !";
+                MessageClic.style.color = "white";
+                var tps = 0
+                var InterV2 = setInterval(function LeTimer1(){
+                    tps++
+                    addEventListener("click",function LeTimer2(){
+                        clearInterval(InterV2);
+                        var score = tps/100;
+                        fond.style.backgroundColor = "white";
+                        Score.textContent = "vous avez mis "+(score)+" seconde(s) à cliquer, félicitations!";
+                        localStorage.setItem("score3",score);
+                        setTimeout(function retour(){window.location = "index.html";
+                        return},3500)
+                        
+                    })
+                },10)
+                
+            },changecoul[Math.floor(Math.random()*changecoul.length)])
+            
+            }else{
+                temps--
+                timer1st.textContent = temps
+            }
+    },1000)
+    }
+</script>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="temp/styles/styleshardclique.css">
+        <meta charset="UTF-8">
+    </head>
+    
+    <header>
+        <title>Test de réflexe</title>
+    </header>
+    
+    <body id = "fond">
+        <div> <a href="index.html"> <input type="button" value="Retour au menu"> </a></div>
+        <audio controls autoplay style = "display: none">
+        <source src="reflex.mp3">
+        </audio>
+        <br><br><br><br><br><br><br><br>
+        <div id = "bienvenue" style = "display: flex; justify-content: center; align-items: center"><hl style = "color: coral; font-size: 40">Ici vous allez tester vos réflexes.</hl></div>
+        <br><br><br><br><br><br><br><br><br>
+        <p class = "centrer" id = "regles">Dans ce jeu vous allez devoir tester vos <span style = "color: red">réflexes</span> : quand vous allez commencer, l'écran sera <span style = "color: red">rouge</span>, dès qu'il passe au <span style = "color: green">vert</span>, cliquez n'importe où le plus vite possible.</p>
+        <br>
+        <p style = "color: coral; font-size: 35; display: flex; justify-content: center; align-items: center" id = "Score"></p>
+        <div id = "bouton" class = "centrer"><input type = "button" value = "commencer le test" onClick = "timer1()">
+            <p style= "display: none" id = "messtime">Temps restant avant le début du test :</p><p id = "timer1st"> </p>
+        </div>
+        <p style = "color: black; font-size: 50; display: flex; justify-content: center; align-items: center" id = "MessageClic"></p>
+    </body>
+</html>
